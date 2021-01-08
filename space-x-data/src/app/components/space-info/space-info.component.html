@@ -1,4 +1,4 @@
- <table class="table">
+<table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -6,22 +6,19 @@
       <th scope="col">Launch Date</th>
       <th scope="col">Rocket Type</th>
       <th scope="col">Cores [First Stage]</th>
-      <th scope="col">Image</th>
-      <th scope="col">Cores</th>
     </tr>
   </thead>
-  <tbody  *ngFor="let info of launchInfo$ | async; index as i">
+  <tbody *ngFor="let info of launchInfo$ | async | slice:1:11; index as i">
     <tr>
       <th scope="row">{{i}}</th>
-      <td>{{info.flight_number}}</td>
-      <td>{{info.launch_date_local | date: 'd-M-yyyy, h:mm a' }}</td>
-      <td>{{info.rocket?.rocket_type}}</td>
-      <div *ngIf="info.rocket.first_stage?.cores?.landing_intent; then available else notavailable"></div>
-      <td><ng-template #available>{{info.rocket.first_stage?.cores?.landing_intent}}</ng-template></td>
-      <td><ng-template #notavailable>N/A</ng-template></td> 
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
+      <td>{{ info.flight_number }}</td>
+      <td>{{ info.launch_date_local | date: "d-M-yyyy, h:mm a" }}</td>
+      <td>{{ info.rocket?.rocket_type }}</td>
+      <td *ngFor="let core of info.rocket.first_stage.cores; first as isFirst">
+        <span *ngIf="core.landing_intent && isFirst; then yes else no"></span>
+          <ng-template #yes><button type="button" class="btn btn-info" (click)="onCoresInfoRoute(info.rocket.first_stage.cores)">View</button></ng-template>
+          <ng-template #no></ng-template>
+      </td>
     </tr>
   </tbody>
-</table> 
+</table>

@@ -1,0 +1,33 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Serial</th>
+      <th scope="col">Flight</th>
+      <th scope="col">Block</th>
+      <th scope="col">Grid Fins</th>
+      <th scope="col">Legs</th>
+      <th scope="col">Reused</th>
+      <th scope="col">Landed</th>
+      <th scope="col">Intent</th>
+      <th scope="col">Type</th>
+      <th scope="col">Vehicle</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let core of cores; index as i">
+    <tr>
+      <td>{{core.core_serial}}</td>
+      <td>{{core.flight}}</td>
+      <td>{{core.block}}</td>
+      <td>{{core.gridfins}}</td>
+      <td>{{core.legs}}</td>
+      <td>{{core.reused}}</td>
+      <td>{{core.land_success}}</td>
+      <td>{{core.landing_intent}}</td>
+      <td>{{core.landing_type}}</td>
+      <td>{{core.landing_vehicle}}</td>
+    </tr>
+  </tbody>
+</table>
+<div class="container">
+    <button type="button" class="btn btn-primary" (click)="onSpaceInfoRoute()">Back</button>
+</div>

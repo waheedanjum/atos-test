@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SpaceInfoComponent } from './components/space-info/space-info.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CoresInfoComponent } from './components/space-info/cores-info/cores-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SpaceInfoComponent
+    SpaceInfoComponent,
+    CoresInfoComponent,
   ],
   imports: [
     BrowserModule,
